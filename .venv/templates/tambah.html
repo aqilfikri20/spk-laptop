@@ -1,0 +1,31 @@
+{% extends "index.html" %} {% block content %}
+<section class="add-page">
+  <h2>Tambah Laptop</h2>
+  <form
+    class="laptop-input"
+    action="/laptop"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <input type="text" name="nama" placeholder="Nama" required />
+    <input type="text" name="kategori" placeholder="Kategori" required />
+    <input type="text" name="processor" placeholder="Processor" required />
+    <input type="text" name="ram" placeholder="RAM" required />
+    <input type="text" name="storage" placeholder="Storage" required />
+    <input type="text" name="layar" placeholder="Layar" required />
+    <input type="text" name="harga" placeholder="Harga" required />
+    <input
+      type="text"
+      name="review_design"
+      placeholder="Review Design"
+      required
+    />
+    <input type="text" name="keunggulan" placeholder="Keunggulan" required />
+    <div>
+      <label>Pilih Gambar Laptop </label>
+      <input type="file" name="img" id="fileInput" class="form-control" />
+    </div>
+    <input type="submit" name="submit" class="btn btn-success" value="UPLOAD" />
+  </form>
+</section>
+{% endblock %}

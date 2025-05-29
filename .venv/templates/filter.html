@@ -1,0 +1,27 @@
+{% extends "index.html" %} {% block content %}
+<h2>Hasil Pencarian</h2>
+<div class="laptop-list">
+    {% if data %}
+        {% for laptops in data %}
+        <div class="laptop-item">
+            <img src="{{ laptops.img }}" alt="{{ laptops['nama'] }}" />
+            <div class="laptop-item_body">
+                <a href="{{ url_for('detail_laptop', id=laptops['id']) }}" class="detail-link">
+                    <h2 class="name">{{ laptops['nama'] }}</h2>
+                </a>
+                <p class="spec">Kategori : {{ laptops['kategori'] }}</p>
+                <p class="spec">Processor : {{ laptops['processor'] }}</p>
+                <p class="spec">RAM : {{ laptops['ram'] }}</p>
+                <p class="spec">Storage : {{ laptops['storage'] }}</p>
+                <p class="spec">Layar : {{ laptops['layar'] }}</p>
+                <h3 class="harga">{{ laptops['baterai'] }}</h3>
+                <h3 class="harga">{{ laptops['harga']|rupiah  }}</h3>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Tidak ada data ditemukan.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

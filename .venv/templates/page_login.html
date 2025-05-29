@@ -1,0 +1,15 @@
+{% extends "index.html" %} {% block content %}
+<section class="add-page">
+  <h1>HALAMAN LOGIN</h1>
+  <h3>Silakan masuk khusus Admin</h3>
+  {% if error %}
+  <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+
+  <form class="laptop-input" method="POST">
+    <input type="email" name="email" placeholder="email" required />
+    <input type="password" name="password" placeholder="password" required />
+    <button type="submit">Masuk</button>
+  </form>
+</section>
+{% endblock %}
