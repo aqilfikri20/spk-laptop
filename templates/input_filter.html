@@ -1,0 +1,118 @@
+{% extends "index.html" %} {% block content %}
+<div class="filter-form">
+  <form method="GET" action="/filter">
+    <div class="form-group">
+      <label for="search">Nama Merk Laptop</label>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        class="form-control"
+        placeholder="Masukkan nama merk laptop"
+        value="{{ request.args.get('search', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="kategori">Kategori</label>
+      <input
+        type="text"
+        name="kategori"
+        id="kategori"
+        class="form-control"
+        placeholder=" kategori (Programer/Gaming/Office)"
+        value="{{ request.args.get('kategori', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="processor">Processor</label>
+      <input
+        type="text"
+        name="processor"
+        id="processor"
+        class="form-control"
+        placeholder="Masukkan processor(contoh : Intel Core i7)"
+        value="{{ request.args.get('processor', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ram">RAM</label>
+      <input
+        type="text"
+        name="ram"
+        id="ram"
+        class="form-control"
+        placeholder="Masukkan ukuran RAM (contoh : 8GB)"
+        value="{{ request.args.get('ram', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="storage">Storage</label>
+      <input
+        type="text"
+        name="storage"
+        id="storage"
+        class="form-control"
+        placeholder="Masukkan ukuran storage (contoh: 512GB)"
+        value="{{ request.args.get('storage', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="layar">Layar</label>
+      <input
+        type="text"
+        name="layar"
+        id="layar"
+        class="form-control"
+        placeholder="Masukkan ukuran layar (14 inch)"
+        value="{{ request.args.get('layar', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="baterai_min">Harga Minimum</label>
+      <input
+        type="number"
+        name="baterai_min"
+        id="baterai_min"
+        class="form-control"
+        placeholder="Masukkan daya tahan baterai minimum"
+        value="{{ request.args.get('harga_min', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="harga_min">Harga Minimum</label>
+      <input
+        type="number"
+        name="harga_min"
+        id="harga_min"
+        class="form-control"
+        placeholder="Masukkan harga minimum"
+        value="{{ request.args.get('harga_min', '') }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="harga_max">Harga Maksimum</label>
+      <input
+        type="number"
+        name="harga_max"
+        id="harga_max"
+        class="form-control"
+        placeholder="Masukkan harga maksimum"
+        value="{{ request.args.get('harga_max', '') }}"
+      />
+    </div>
+    
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-primary">Cari</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

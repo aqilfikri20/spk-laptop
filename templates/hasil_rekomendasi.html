@@ -1,0 +1,38 @@
+{% extends "index.html" %} {% block content %}
+<div class="wrap-rekomendasi">
+  <h2>Hasil Rekomendasi Laptop Berdasarkan Bobot Anda</h2>
+  <div class="wrap-table">
+    <table class="table-hasil">
+      <thead>
+        <tr>
+          <th>Peringkat</th>
+          <th>Nama</th>
+          <th>Skor SAW</th>
+          <th>Harga</th>
+          <th>Processor</th>
+          <th>RAM</th>
+          <th>Storage</th>
+          <th>Baterai</th>
+          <th>Layar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          {# loop.index dimulai dari 1 #}
+          <td>{{ item.nama }}</td>
+          <td>{{ item.skor }}</td>
+          <td>{{ item.harga | rupiah }}</td>
+          <td>{{ item.processor }}</td>
+          <td>{{ item.ram }} GB</td>
+          <td>{{ item.storage }} GB</td>
+          <td>{{ item.baterai }} Wh</td>
+          <td>{{ item.layar }} inch</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
