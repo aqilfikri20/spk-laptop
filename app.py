@@ -1,5 +1,5 @@
 from flask import Flask,render_template,jsonify,session, request,redirect, url_for
-from flask_mysqldb import MySQL
+from flask_sqlalchemy import SQLAlchemy
 from MySQLdb.cursors import DictCursor
 from werkzeug.utils import secure_filename
 import cloudinary
@@ -17,12 +17,11 @@ cloudinary.config(
 
 # mysql config
 
-app.config['MYSQL_HOST'] = os.environ.get('hopper.proxy.rlwy.net')
-app.config['MYSQL_USER'] = os.environ.get('root')
-app.config['MYSQL_PASSWORD'] = os.environ.get('QwOEGFDgDsACGVhqWmDsGxtvAyPqfHpF')
-app.config['MYSQL_DB'] = os.environ.get('railway')
+from flask_sqlalchemy import SQLAlchemy
 
-mysql = MySQL(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.environ.get('MYSQLUSER')}:{os.environ.get('MYSQLPASSWORD')}@{os.environ.get('MYSQLHOST')}:{os.environ.get('MYSQLPORT')}/{os.environ.get('MYSQLDATABASE')}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 @app.route("/tambah")
 def tambah():
