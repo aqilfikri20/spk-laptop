@@ -17,10 +17,10 @@ cloudinary.config(
 
 # mysql config
 
-app.config['MYSQL_HOST'] = os.environ.get('localhost')
+app.config['MYSQL_HOST'] = os.environ.get('hopper.proxy.rlwy.net')
 app.config['MYSQL_USER'] = os.environ.get('root')
-app.config['MYSQL_PASSWORD'] = os.environ.get('')
-app.config['MYSQL_DB'] = os.environ.get('laptops_db')
+app.config['MYSQL_PASSWORD'] = os.environ.get('QwOEGFDgDsACGVhqWmDsGxtvAyPqfHpF')
+app.config['MYSQL_DB'] = os.environ.get('railway')
 
 mysql = MySQL(app)
 
@@ -120,7 +120,7 @@ def laptop():
             cursor = mysql.connection.cursor()
             sql = """INSERT INTO table_laptop 
                      (nama, kategori, processor, ram, storage, layar,baterai, harga, img, review_design, keunggulan) 
-                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                     VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
             val = (nama, kategori, processor, ram, storage, layar,baterai, harga, img_url, review_design, keunggulan)
             cursor.execute(sql, val)
             mysql.connection.commit()
@@ -369,5 +369,5 @@ def rupiah_format(value):
     return f"Rp{value:,.0f}".replace(",", ".")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 33192))
     app.run(host="0.0.0.0", port=port)
