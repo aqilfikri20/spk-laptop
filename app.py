@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import os
 app=Flask(__name__)
 app.secret_key = 'your_password ' 
 
@@ -15,10 +16,12 @@ cloudinary.config(
 )
 
 # mysql config
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'laptops_db'
+
+app.config['MYSQL_HOST'] = os.environ.get('localhost')
+app.config['MYSQL_USER'] = os.environ.get('root')
+app.config['MYSQL_PASSWORD'] = os.environ.get('')
+app.config['MYSQL_DB'] = os.environ.get('laptops_db')
+
 mysql = MySQL(app)
 
 @app.route("/tambah")
@@ -366,4 +369,5 @@ def rupiah_format(value):
     return f"Rp{value:,.0f}".replace(",", ".")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
