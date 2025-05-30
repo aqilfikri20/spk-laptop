@@ -19,7 +19,7 @@ cloudinary.config(
 
 from flask_sqlalchemy import SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.environ.get('MYSQLUSER')}:{os.environ.get('MYSQLPASSWORD')}@{os.environ.get('MYSQLHOST')}:{os.environ.get('MYSQLPORT')}/{os.environ.get('MYSQLDATABASE')}"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:hnBiLVEzAlwSXErsSAkurYOQVtqaayqc@caboose.proxy.rlwy.net:34879/railway'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
